@@ -1,0 +1,40 @@
+1 下载nodejs
+  官网下载nodejs
+  根据自己操作系统的类型选择32-bit/64-bit。
+
+2 安装nodejs
+  双击下载的“node-v8.9.3-x64.msi”安装文件，一路next下去。
+  nodejs的默认安装路径为“C:\Program Files\nodejs\”，你可以自定义安装路径。
+  最后单击install开始安装。
+  安装完成后，建议再找个喜欢的地方创建一个全局包文件夹，这样你的全局包与缓存会放在这个文件夹下，比较好找。
+  包目录创建好后，在nodejs安装目录下的node_modules\npm下找到npmrc文件，并修改：
+    修改全局包与缓存的目录配置为刚刚我们创建的文件夹。 
+3 配置环境变量
+  nodejs安装完成之后，会自动在系统的path环境变量中配置nodejs的目录路径，所以不需要我们手动配置。
+  如果在cmd命令行中输入node提示错误，你可以打开“属性 —> 高级系统设置 —> 环境变量”，在系统变量的path中找到nodejs的配置，
+  点击编辑，在后面加入nodejs的安装目录，
+4 检查是否安装成功  
+  打开cmd，输入node -v回车显示node版本，输入npm -v回车，显示npm版本，则表示node安装成功。
+  在用户变量Path中，修改默认配置为刚刚设置的prefix路径。
+5 npm安装
+  新版的nodejs已经集成了npm，所以在之前安装nodejs时，npm也一并安装好了。
+  同样，使用cmd命令行检查npm是否安装成功，输入npm -v回车。如果输出版本号则安装成功。
+6 node使用
+  新建一个server.js文件。代码如下：
+  // 引入http模块
+  var http = require("http"); 
+
+  // 创建server
+  http.createServer(
+      function(request, response) { 
+          response.writeHead(200, {"Content-Type": "text/plain"}); 
+          response.write("Hello World!"); 
+          response.end(); 
+     }
+  ).listen(2500); 
+
+  console.log("http://localhost:2500");
+  打开cmd命令行，进入server.js的根目录，然后输入node server.js回车
+  看到输出  http://localhost:2500
+  打开浏览器，在地址栏输入http://localhost:2500。
+  输出   Hello World!
